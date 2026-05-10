@@ -62,6 +62,9 @@ services:
     container_name: mongodb
   
   redis:
+    build:
+      context: ./redis
+      dockerfile: Dockerfile
     image: redis:7.0            # as there is no change in image we are building image from compose yaml file
     container_name: redis
 
