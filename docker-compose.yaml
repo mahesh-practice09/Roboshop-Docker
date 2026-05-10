@@ -1,0 +1,6 @@
+services:
+  mongodb:
+    build:
+      dockerfile: ./mongodb 
+      labels:
+        - mahesh050917/mongodb:1.0.0
