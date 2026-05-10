@@ -26,18 +26,21 @@ services:
     image: mahesh050917/cart:1.0.0
     container_name: cart
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile 
+    image: mahesh050917/frontend:1.0.0
+    container_name: frontend
   mongodb:
     build:
       context: ./mongodb
       dockerfile: Dockerfile
     image: mahesh050917/mongodb:1.0.0
     container_name: mongodb
-
+  
   redis:
-    build:
-      context: ./redis
-      dockerfile: Dockerfile
-    image: mahesh050917/redis:1.0.0
+    image: redis:7.0
     container_name: redis
 
 networks:
