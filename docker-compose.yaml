@@ -1,14 +1,16 @@
 services:
+
   catalogue:
-    build: 
-     context: ./catalogue
-     dockerfile: catalogue.Dockerfile
+    build:
+      context: ./catalogue
+      dockerfile: catalogue.Dockerfile
     image: mahesh050917/catalogue:1.0.0
     container_name: catalogue
     depends_on:
       - mongodb
+
   user:
-    build: 
+    build:
       context: ./user
       dockerfile: user.Dockerfile
     image: mahesh050917/user:1.0.0
@@ -16,26 +18,29 @@ services:
     depends_on:
       - redis
       - mongodb
+
   cart:
-     build: 
+    build:
       context: ./cart
       dockerfile: cart.Dockerfile
-     image: mahesh050917/cart:1.0.0
-     container_name: cart
+    image: mahesh050917/cart:1.0.0
+    container_name: cart
+
   mongodb:
-    build: 
+    build:
       context: ./mongodb
-      dockerfile: mongodb.Dockerfile           # it moves to mongodb directory
-    image: mahesh050917/mongodb:1.0.0          # docker build -t mahesh050917/monogdb:1.0.0 
+      dockerfile: mongodb.Dockerfile
+    image: mahesh050917/mongodb:1.0.0
     container_name: mongodb
+
   redis:
-    build: 
-     context: ./redis
-     dockerfile: redis.Dockerfile
+    build:
+      context: ./redis
+      dockerfile: redis.Dockerfile
     image: mahesh050917/redis:1.0.0
     container_name: redis
+
 networks:
-  default: 
+  default:
     driver: bridge
     name: roboshop
-    external: false                           #if true you need to create network manually.
