@@ -25,6 +25,9 @@ services:
       dockerfile: Dockerfile
     image: mahesh050917/cart:1.0.0
     container_name: cart
+    depends_on:
+      - catalogue
+      - redis
 
   frontend:
     build:
@@ -49,6 +52,7 @@ services:
     container_name: shipping
     depends_on:
       - mysql
+      - cart
 
   payment:
     build: 
@@ -58,6 +62,8 @@ services:
     container_name: payment
     depends_on:
       - rabbitmq
+      - cart
+      - user
   mongodb:
     build:
       context: ./mongodb
