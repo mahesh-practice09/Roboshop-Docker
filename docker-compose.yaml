@@ -15,11 +15,11 @@ services:
     depends_on:
       - redis
       - mongodb
-  cart:
-     build: 
-      dockerfile: cart.Dockerfile
-     image: mahesh050917/cart:1.0.0
-     container_name: cart
+  # cart:
+  #    build: 
+  #     dockerfile: cart.Dockerfile
+  #    image: mahesh050917/cart:1.0.0
+  #    container_name: cart
   mongodb:
     build: 
       dockerfile: mongodb.Dockerfile           # it moves to mongodb directory
