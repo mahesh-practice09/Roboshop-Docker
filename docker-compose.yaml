@@ -46,8 +46,22 @@ services:
     container_name: mongodb
   
   redis:
-    image: redis:7.0
+    image: redis:7.0            # as there is no change in image we are building image from compose yaml file
     container_name: redis
+
+  mysql:
+   build:
+     context: ./mysql 
+     dockerfile: Dockerfile
+   image: mahesh050917/mysql:1.0.0 
+   container_name: mysql
+  
+  rabbitmq:
+    build:
+     context: ./rabbitmq
+     dockerfile: Dockerfile
+    image: mahesh050917/rabbitmq:1.0.0 
+    container_name: rabbitmq
 
 networks:
   default:
