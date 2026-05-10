@@ -34,6 +34,10 @@ services:
     container_name: frontend
     ports: 
      - "80:80"
+    depends_on:
+      - catalogue
+      - cart
+      - user
   mongodb:
     build:
       context: ./mongodb
