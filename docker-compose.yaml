@@ -38,6 +38,22 @@ services:
       - catalogue
       - cart
       - user
+  
+  shipping:
+    build: 
+     context: ./shipping 
+     dockerfile: Dockerfile 
+    image: mahesh050917/shipping:1.0.0
+    depends_on:
+      - mysql
+
+  payment:
+    build: 
+     context: ./payment 
+     dockerfile: Dockerfile 
+    image: mahesh050917/payment:1.0.0
+    depends_on:
+      - rabbitmq
   mongodb:
     build:
       context: ./mongodb
