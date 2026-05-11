@@ -12,7 +12,11 @@ WORKDIR /app
 COPY --from=builder /app /app
 ENV MONGO=true \
     MONGO_URL="mongodb://mongodb:27017/catalogue"
-CMD ["node","server.js"]
+RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
+RUN chown -R roboshop:roboshop /app
+USER roboshop
+CMD ["server.js"]
+ENTRYPOINT [ "node" ]
 
 # FROM node:20 
 # WORKDIR /app
